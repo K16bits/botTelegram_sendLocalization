@@ -13,8 +13,7 @@ class Database:
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 name varchar(60) NOT NULL,
                 latitude varchar(255) NOT NULL,
-                longitude varchar(255) NOT NULL,
-                date DATETIME
+                longitude varchar(255) NOT NULL
             );''')
 
     def DropTable(self):
