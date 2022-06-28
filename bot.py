@@ -48,12 +48,21 @@ def getLocation(update,context:CallbackContext):
         text="Localização enviado para o Banco de Dados"
     )
 
+def listOfLocalization(update,context:CallbackContext):
+    userID = update.message.chat.id
+    dbUsers = database.SelectAll()
+    context.bot.send_message(
+        chat_id=userID,
+        text=dbUsers
+    )
 
 updater = Updater(token=keyApi)
 dispatcher = updater.dispatcher
 
 dispatcher.add_handler(CommandHandler("loc",start))
 dispatcher.add_handler(MessageHandler(Filters.location, getLocation))
+
+dispatcher.add_handler(CommandHandler("get",listOfLocalization))
 
 updater.start_polling()
 updater.idle()

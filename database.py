@@ -28,6 +28,11 @@ class Database:
         )
         
         self.commit()
-    
+
+    def SelectAll(self):
+        self.cur.execute('''SELECT * FROM person''') 
+        db = self.cur.fetchall()
+        return db
+
     def commit(self):
         self.conn.commit()
